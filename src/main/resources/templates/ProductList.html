@@ -23,10 +23,13 @@
         <tr th:each="product: ${products}">
             <td th:text="${product.productName}"></td>
             <td th:text="${product.productQuantity}"></td>
-            <td>
+            <td style="display: flex; gap: 10px;">
                 <a th:href="@{/product/edit/{id}(id = ${product.productId})}">
                 <button>Edit</button>
                 </a>
+                <form th:action="@{/product/delete/{id}(id=${product.productId})}" method="post">
+                    <button type="submit">Delete</button>
+                </form>
             </td>
         </tr>
         </tbody>
