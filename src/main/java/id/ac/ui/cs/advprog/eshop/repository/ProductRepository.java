@@ -35,6 +35,11 @@ public class ProductRepository{
         return originalProduct;
     }
 
+    public void delete(String productId) {
+        Product product = searchById(productId);
+        productData.remove(product);
+    }
+
     public static class NoSuchProductException extends RuntimeException {
         public NoSuchProductException(String message) {
             super(message);
