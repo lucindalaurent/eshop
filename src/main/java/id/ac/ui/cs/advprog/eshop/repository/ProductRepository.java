@@ -29,9 +29,10 @@ public class ProductRepository{
         throw new NoSuchProductException("Product with id " + productId + " does not exist!");
     }
 
-    public Product update(Product originalProduct, String newName, int newQuantity){
-        originalProduct.setProductName(newName);
-        originalProduct.setProductQuantity(newQuantity);
+    public Product update(Product editedProduct){
+        Product originalProduct = searchById(editedProduct.getProductId());
+        originalProduct.setProductName(editedProduct.getProductName());
+        originalProduct.setProductQuantity(editedProduct.getProductQuantity());
         return originalProduct;
     }
 
