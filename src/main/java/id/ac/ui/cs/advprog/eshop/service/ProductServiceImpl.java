@@ -36,12 +36,7 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public Product update(Product editedProduct){
-        String productId = editedProduct.getProductId();
-        String newName = editedProduct.getProductName();
-        int newQuantity = editedProduct.getProductQuantity();
-
-        Product originalProduct = searchById(productId);
-        return productRepository.update(originalProduct, newName, newQuantity);
+        return productRepository.update(editedProduct);
     }
 
     @Override
