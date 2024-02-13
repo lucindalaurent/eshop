@@ -19,4 +19,31 @@ public class ProductRepository{
     public Iterator<Product> findAll(){
         return productData.iterator();
     }
+
+    public Product searchById(String productId){
+        for(Product product: productData){
+            if(product.getProductId().equals(productId)){
+                return product;
+            }
+        }
+        throw new NoSuchProductException("Product with id " + productId + " does not exist!");
+    }
+
+    public Product update(Product editedProduct){
+        Product originalProduct = searchById(editedProduct.getProductId());
+        originalProduct.setProductName(editedProduct.getProductName());
+        originalProduct.setProductQuantity(editedProduct.getProductQuantity());
+        return originalProduct;
+    }
+
+    public void delete(String productId) {
+        Product product = searchById(productId);
+        productData.remove(product);
+    }
+
+    public static class NoSuchProductException extends RuntimeException {
+        public NoSuchProductException(String message) {
+            super(message);
+        }
+    }
 }
