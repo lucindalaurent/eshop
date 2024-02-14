@@ -3,6 +3,10 @@ NPM: 2206024745<br>
 Kelas: Adpro B<br>
 
 # Tutorial 1
+
+<details>
+<summary>Reflection 1</summary>
+
 ### Reflection 1
 _Clean code principles_ yang telah saya coba terapkan pada kode untuk fitur `edit` dan `delete` saya antara lain:
 * Meaningful names<br>
@@ -26,10 +30,10 @@ Selain clean code principles dan secure coding practice, saya sudah menerapkan f
 * Belum menerapkan beberapa secure coding practice seperti authentication dan authorization. 
 * Belum menerapkan input data validation dari sisi server.
 * Masih terdapat redundansi pada kode unit test saat membuat dummy data. 
+</details>
 
-
-
-
+<details>
+<summary>Reflection 2</summary>
 
 ### Reflection 2
 1. Setelah menulis unit test, saya merasa senang karena sudah menyelesaikan tugasnya :) Saya juga merasa lebih yakin dengan kebenaran kode yang telah saya buat karena selain testing manual, kode saya juga lulus semua unit test yang saya buat sendiri.<br>
@@ -37,3 +41,29 @@ Jumlah unit test yang harus dibuat sebaiknya menyesuaikan jumlah fungsionalitas 
 Untuk memastikan unit test yang dibuat sudah cukup untuk memverifikasi program kita, kita perlu mencoba menghandle semua kemungkinan interaksi yang bisa dilakukan pengguna dengan program kita. Penggunaan konsep code coverage dapat membantu kita untuk memastikan kita sudah melakukan tes pada keseluruhan program.<br>
 Di sisi lain, 100% code coverage tidak menjamin program kita bebas dari bug dan error. Code coverage hanya menggambarkan berapa persen source code yang telah dites, sehingga dapat membantu kita mengecek apakah ada bagian program yang belum dites. Sayangnya code coverage tidak memberi tahu kita apakah tes yang kita buat sudah cukup baik. Bisa saja program kita sudah lulus unit tes yang kita buat, namun masih terdapat logic error pada alur program atau ada skenario yang tidak terpikirkan. <br>
 2. Jika kita membuat kelas _functional test_ baru yang serupa dengan kelas sebelumnya, kode tersebut menurut saya akan jadi kurang bersih karena bersifat _redundant_. 2 kode yang serupa tentu kurang efisien dan cenderung sulit di-maintain karena jika kita ingin mengubah setupnya, kita perlu mengubahnya 2 kali. Untuk membuat kodenya lebih bersih mungkin functional test baru tersebut bisa ditambahkan di kelas `CreateProductFunctionalTest` yang sudah ada. Kita bisa membuat fungsi khusus untuk instansiasi produk, sehingga fungsi testingnya bisa fokus untuk mengecek kebenaran output saja.
+</details>
+
+# Tutorial 2
+Take notes:
+1. Code coverage modul 1 secara keseluruhan di angka 53%. Setelah menambahkan unit test untuk ProductServiceImpl, code coverage meningkat ke 71%.
+2. Detected code quality issues dari PMD antara lain:
+* Node.js 16 actions are deprecated.
+* Consider make classes that only have static methods as utility classes. 
+* Unused import 'org.springframework.web.bind.annotation.*'
+* Unnecessary modifier 'public' on method 'delete': the method is declared in an interface type
+3. Link deployment : https://advprog-eshop-lucinda-laurent.koyeb.app/
+<details>
+<summary>Reflection</summary>
+
+1. Code quality issue(s) dari PMD code analysis yang saya perbaiki selama latihan:
+* Penggunaan modifier 'public' untuk method di dalam interface 'ProductService'
+Method di dalam suatu interface sudah 'public abstract' by default sehingga kita tidak perlu menuliskan modifier public secara eksplisit.
+Solusi: menghapus modifier 'public' tersebut dari method-method di interface
+* Import statement yang tidak terpakai
+Terkadang ada import yang lupa dihapus ketika apa yang diimpor tidak jadi digunakan di dalam program. 
+Solusi: menghapus import statement yang tidak jadi digunakan <br>
+
+2. Menurut saya, implementasi CI/CD workflows saya sudah memenuhi definisi Continuous Integration and Continuous Deployment: <br>
+   Continuous Integration merupakan praktik untuk mengautomasi proses integrasi dan verifikasi setiap perubahan pada kode dengan bantuan alat. Dengan menggunakan script untuk menjalankan unit test (`ci.yml`), menganalisis isu keamanan (`scorecard.yml`), serta identifikasi potensi masalah dalam program (`pmd.yml`) setiap melakukan push(juga merge) ke repository Github, kode saya sudah menerapkan automasi proses integrasi dan verifikasi. <br> 
+Continuous Deployment merupakan praktik untuk mengautomasi proses deployment aplikasi ke server tertentu. Dengan mengintegrasikan layanan `Koyeb` ke repositori Github, aplikasi eshop akan ter-deploy secara otomatis setiap kali saya melakukan push ke branch main di repositori Github.
+</details>
