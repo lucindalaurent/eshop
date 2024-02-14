@@ -27,6 +27,6 @@ jobs:
           rulesets: 'rulesets/java/quickstart.xml,ruleset.xml'
           analyzeModifiedFilesOnly: false
       - name: Upload SARIF file
-        uses: 'rulesets/java/quickstart.xml,ruleset.xml'
+        uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: pmd-report.sarif
