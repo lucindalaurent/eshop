@@ -67,8 +67,8 @@ Solusi: menghapus import statement yang tidak jadi digunakan <br>
    Continuous Integration merupakan praktik untuk mengautomasi proses integrasi dan verifikasi setiap perubahan pada kode dengan bantuan alat. Dengan menggunakan script untuk menjalankan unit test (`ci.yml`), menganalisis isu keamanan (`scorecard.yml`), serta identifikasi potensi masalah dalam program (`pmd.yml`) setiap melakukan push(juga merge) ke repository Github, kode saya sudah menerapkan automasi proses integrasi dan verifikasi. <br> 
 Continuous Deployment merupakan praktik untuk mengautomasi proses deployment aplikasi ke server tertentu. Dengan mengintegrasikan layanan `Koyeb` ke repositori Github, aplikasi eshop akan ter-deploy secara otomatis setiap kali saya melakukan push ke branch main di repositori Github.
 </details>
-<details>
-<summary>Reflection 3</summary>
+
+# Tutorial 3
 1. SOLID Principles yang telah saya aplikasikan yaitu:
 
 * Single Responsibility Principle (SRP)
@@ -95,4 +95,3 @@ Method yang melakukan terlalu banyak hal di dalamnya akan jauh lebih sulit untuk
 Saat kita ingin menguji suatu method, jika method yang kita buat memiliki dependency yang tinggi terhadap bagian kode lain tentu akan sulit untuk memastikan method tersebut sudah benar implementasinya.
 * Kode akan sulit untuk diubah.
 Jika kode kita memiliki dependency tinggi terhadap bagian kode lain, bisa-bisa saat mengubah satu bagian kode, kode-kode yang tidak berhubungan juga ikut berubah behaviornya dan terjadi error yang tidak diinginkan.
-</details>
