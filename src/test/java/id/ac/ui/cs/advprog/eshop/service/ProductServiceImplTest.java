@@ -63,7 +63,7 @@ public class ProductServiceImplTest{
     }
 
     @Test
-    void testSearchById(){
+    void testFindById(){
         String productId = "c0f9de46-98b1-437d-a0bf-a0821dde9896";
         Product expectedProduct = new Product();
         expectedProduct.setProductId(productId);
@@ -71,7 +71,7 @@ public class ProductServiceImplTest{
         expectedProduct.setProductQuantity(12);
         when(productRepository.searchById(productId)).thenReturn(expectedProduct);
 
-        Product actualProduct = productService.searchById(productId);
+        Product actualProduct = productService.findById(productId);
 
         assertEquals(expectedProduct, actualProduct);
     }
@@ -86,7 +86,7 @@ public class ProductServiceImplTest{
 
         when(productRepository.update(any(Product.class))).thenReturn(updatedProduct);
 
-        Product result = productService.update(updatedProduct);
+        Product result = productService.update(productId, updatedProduct);
 
         verify(productRepository).update(any(Product.class));
     }
@@ -95,7 +95,7 @@ public class ProductServiceImplTest{
     void testDeleteProduct(){
         String productId = "c0f9de46-98b1-437d-a0bf-a0821dde9890";
 
-        productService.delete(productId);
+        productService.deleteProductById(productId);
 
         verify(productRepository, times(1)).delete(productId);
     }
