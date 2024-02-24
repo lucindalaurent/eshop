@@ -67,3 +67,31 @@ Solusi: menghapus import statement yang tidak jadi digunakan <br>
    Continuous Integration merupakan praktik untuk mengautomasi proses integrasi dan verifikasi setiap perubahan pada kode dengan bantuan alat. Dengan menggunakan script untuk menjalankan unit test (`ci.yml`), menganalisis isu keamanan (`scorecard.yml`), serta identifikasi potensi masalah dalam program (`pmd.yml`) setiap melakukan push(juga merge) ke repository Github, kode saya sudah menerapkan automasi proses integrasi dan verifikasi. <br> 
 Continuous Deployment merupakan praktik untuk mengautomasi proses deployment aplikasi ke server tertentu. Dengan mengintegrasikan layanan `Koyeb` ke repositori Github, aplikasi eshop akan ter-deploy secara otomatis setiap kali saya melakukan push ke branch main di repositori Github.
 </details>
+
+# Tutorial 3
+1. SOLID Principles yang telah saya aplikasikan yaitu:
+
+* Single Responsibility Principle (SRP)
+Saya mengimplementasikan SRP dengan memisahkan CarController ke dalam file yang berbeda dari file ProductController. Dengan begitu file Product Controller fokus mengatur interaksi terkait model Product saja dan file Car Controller fokus mengatur interaksi terkait model Car saja. 
+* Open-Closed Principle (OCP)
+OCP artinya kelas, modul, dan fungsi harus terbuka pada pengembangan namun tertutup terhadap modifikasi. Kode saya sudah menerapkan prinsip ini. Misalnya apabila kita ingin menambahkan mapping link yang baru kita bisa membuat file controller baru, sehingga tidak mengubah kode lama. Atau jika ingin menambahkan fungsionalitas baru, kita bisa menambahkan method pada ProductService dan CarService tanpa mengubah kode yang sudah ada.
+* Liskov Substitution Principle (LSP)
+Pada kode before SOLID, CarController dibuat extends Product Controller. Hal ini tidak sesuai dengan prinsip LSP karena CarController tidak dapat di-replace dengan ProductController, maupun sebaliknya tanpa mengubah alur dan kebenaran program. Karena ProductController dan CarController memang mengatur hal yang berbeda dan tidak bisa saling menggantikan, saya menghapus `extends ProductController` dari CarController.
+* Interface Segregation Principle (ISP)
+Dengan memisahkan interface `ProductService` dan `CarService`, program saya sudah mencegah implementasi method yang tidak dibutuhkan saat mengimplementasikan sebuah interface.
+* Dependency Inversions Principle (DIP)
+Pada kode before SOLID, CarController dependent pada CarServiceImpl karena menggunakan CarServiceImpl (concrete class) untuk memanggil method Service. Hal ini diperbaiki dengan menggunakan interface CarService-nya saja.
+2. Manfaat menerapkan SOLID Principles<br> 
+* Kode lebih mudah dipahami
+* Mempermudah penambahan fitur baru karena low coupling sehingga tiap bagian kode tidak terikat pada bagian kode yang lain.
+* Mengurangi risiko terjadinya bug.
+* Mempermudah testing karena tiap bagian kode fokus pada tujuan tertentu.
+
+3. Kerugian tidak mengimplementasikan SOLID Principles<br>
+* Penambahan fitur sulit dilakukan.
+* Kode akan sulit untuk dibaca dan diperbaiki.
+Method yang melakukan terlalu banyak hal di dalamnya akan jauh lebih sulit untuk diperbaiki apabila terdapat bug di dalamnya.
+* Kode akan sulit untuk diuji.
+Saat kita ingin menguji suatu method, jika method yang kita buat memiliki dependency yang tinggi terhadap bagian kode lain tentu akan sulit untuk memastikan method tersebut sudah benar implementasinya.
+* Kode akan sulit untuk diubah.
+Jika kode kita memiliki dependency tinggi terhadap bagian kode lain, bisa-bisa saat mengubah satu bagian kode, kode-kode yang tidak berhubungan juga ikut berubah behaviornya dan terjadi error yang tidak diinginkan.

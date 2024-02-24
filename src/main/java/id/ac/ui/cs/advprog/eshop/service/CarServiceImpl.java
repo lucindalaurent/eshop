@@ -26,8 +26,7 @@ public class CarServiceImpl implements CarService{
     }
     @Override
     public Car findById(String carId){
-        Car car = carRepository.findById(carId);
-        return car;
+        return carRepository.findById(carId);
     }
     @Override
     public void update(String carId, Car car){
