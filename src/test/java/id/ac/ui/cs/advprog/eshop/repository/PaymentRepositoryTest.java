@@ -24,9 +24,9 @@ class PaymentRepositoryTest {
 
         List<Product> products = new ArrayList<>();
         Product product1 = new Product();
-        product1.setId("eb558e9f-1c39-460e-8860-71af6af63bd6");
-        product1.setName("Sampo Cap Bambang");
-        product1.setQuantity(2);
+        product1.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        product1.setProductName("Sampo Cap Bambang");
+        product1.setProductQuantity(2);
         products.add(product1);
 
         List<Order> orders = new ArrayList<>();
@@ -41,15 +41,15 @@ class PaymentRepositoryTest {
 
         Map<String, String> paymentData1 = new HashMap<String, String>();
         paymentData1.put("voucherCode", "ESHOP1234ABC5678");
-        Payment payment1 = new Payment("6c93d3e2-b009-46ba-9d15-f03d85adc2de", "VOUCHER_CODE", paymentData1,
-                orders.getFirst());
+        Payment payment1 = new Payment("6c93d3e2-b009-46ba-9d15-f03d85adc2de", "VOUCHER_CODE",
+                orders.getFirst(), paymentData1);
         payments.add(payment1);
 
         Map<String, String> paymentData2 = new HashMap<String, String>();
         paymentData2.put("address", "Jalan Anggur");
         paymentData2.put("deliveryFee", "12000");
-        Payment payment2 = new Payment("6c93d3e2-b009-46ba-9d15-f03d85adc2d2", "CASH_ON_DELIVERY", paymentData2,
-                orders.getFirst());
+        Payment payment2 = new Payment("6c93d3e2-b009-46ba-9d15-f03d85adc2d2", "CASH_ON_DELIVERY",
+                orders.getFirst(), paymentData2);
         payments.add(payment2);
     }
 
@@ -72,8 +72,8 @@ class PaymentRepositoryTest {
         Payment payment = payments.get(1);
         paymentRepository.save(payment);
 
-        Payment newPayment = new Payment(payment.getId(), payment.getMethod(), payments.get(0).getPaymentData(),
-                payment.getOrder());
+        Payment newPayment = new Payment(payment.getId(), payment.getMethod(),
+                payment.getOrder(), payments.get(0).getPaymentData());
         Payment result = paymentRepository.save(newPayment);
         Payment findResult = paymentRepository.findById(payments.get(1).getId());
 
