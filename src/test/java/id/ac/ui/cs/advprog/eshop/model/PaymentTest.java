@@ -1,5 +1,6 @@
 package id.ac.ui.cs.advprog.eshop.model;
 
+import id.ac.ui.cs.advprog.eshop.enums.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -83,7 +84,7 @@ public class PaymentTest {
         paymentData.put("voucherCode", "ESHOP1234ABC5678");
         Payment payment = new Payment("18353427-09av-40p7-b504-5o902399d79b", "VOUCHER_CODE",
                 this.orders.getLast(), paymentData);
-        assertEquals("SUCCESS", payment.getStatus());
+        assertEquals(PaymentStatus.SUCCESS.getValue(), payment.getStatus());
     }
 
     @Test
@@ -92,7 +93,7 @@ public class PaymentTest {
         paymentData.put("voucherCode", "ESHOP1234ABC567810");
         Payment payment = new Payment("18353427-09av-40p7-b504-5o902399d79b", "VOUCHER_CODE",
                 this.orders.getFirst(), paymentData);
-        assertEquals("REJECTED", payment.getStatus());
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment.getStatus());
     }
 
     @Test
@@ -101,7 +102,7 @@ public class PaymentTest {
         paymentData.put("voucherCode", "DAUN1234AB5678");
         Payment payment = new Payment("18353427-09av-40p7-b504-5o902399d79b", "VOUCHER_CODE",
                 this.orders.getFirst(), paymentData);
-        assertEquals("REJECTED", payment.getStatus());
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment.getStatus());
     }
 
     @Test
@@ -110,7 +111,7 @@ public class PaymentTest {
         paymentData.put("voucherCode", "ESHOP1234ABC567D");
         Payment payment = new Payment("18353427-09av-40p7-b504-5o902399d79b", "VOUCHER_CODE",
                 this.orders.getLast(), paymentData);
-        assertEquals("REJECTED", payment.getStatus());
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment.getStatus());
     }
 
     @Test
@@ -120,7 +121,7 @@ public class PaymentTest {
         Payment payment = new Payment("18353427-09av-40p7-b504-5o902399d79b", "VOUCHER_CODE",
                 this.orders.getFirst(), paymentData);
         payment.setStatus("SUCCESS");
-        assertEquals("SUCCESS", payment.getOrder().getStatus());
+        assertEquals(PaymentStatus.SUCCESS.getValue(), payment.getOrder().getStatus());
     }
 
     @Test
@@ -140,7 +141,7 @@ public class PaymentTest {
         paymentData.put("deliveryFee", "15000");
         Payment payment = new Payment("18353427-09av-40p7-b504-5o902399d79b",
                 "CASH_ON_DELIVERY", this.orders.getFirst(), paymentData);
-        assertEquals("SUCCESS", payment.getStatus());
+        assertEquals(PaymentStatus.SUCCESS.getValue(), payment.getStatus());
     }
 
     @Test
@@ -150,7 +151,7 @@ public class PaymentTest {
         paymentData.put("address", "");
         Payment payment = new Payment("18353427-09av-40p7-b504-5o902399d79b",
                 "CASH_ON_DELIVERY", this.orders.getLast(), paymentData);
-        assertEquals("REJECTED", payment.getStatus());
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment.getStatus());
     }
 
     @Test
@@ -159,7 +160,7 @@ public class PaymentTest {
         paymentData.put("address", "Jalan Kebenaran");
         Payment payment = new Payment("6c93d3e2-b009-46ba-9d15-f03d85adc2de",
                 "CASH_ON_DELIVERY", this.orders.getFirst(), paymentData);
-        assertEquals("REJECTED", payment.getStatus());
+        assertEquals(PaymentStatus.REJECTED.getValue(), payment.getStatus());
     }
 
     @Test
@@ -170,7 +171,7 @@ public class PaymentTest {
         Payment payment = new Payment("6c93d3e2-b009-46ba-9d15-f03d85adc2de",
                 "CASH_ON_DELIVERY", this.orders.getLast(), paymentData);
         payment.setStatus("SUCCESS");
-        assertEquals("SUCCESS", payment.getOrder().getStatus());
+        assertEquals(OrderStatus.SUCCESS.getValue(), payment.getOrder().getStatus());
     }
 
     @Test
@@ -181,7 +182,7 @@ public class PaymentTest {
         Payment payment = new Payment("6c93d3e2-b009-46ba-9d15-f03d85adc2de",
                 "CASH_ON_DELIVERY", this.orders.getFirst(), paymentData);
         payment.setStatus("REJECTED");
-        assertEquals("FAILED", payment.getOrder().getStatus());
+        assertEquals(OrderStatus.FAILED.getValue(), payment.getOrder().getStatus());
     }
 
 }
