@@ -69,6 +69,8 @@ Continuous Deployment merupakan praktik untuk mengautomasi proses deployment apl
 </details>
 
 # Tutorial 3
+<details>
+<summary>Reflection</summary>
 1. SOLID Principles yang telah saya aplikasikan yaitu:
 
 * Single Responsibility Principle (SRP)
@@ -95,3 +97,21 @@ Method yang melakukan terlalu banyak hal di dalamnya akan jauh lebih sulit untuk
 Saat kita ingin menguji suatu method, jika method yang kita buat memiliki dependency yang tinggi terhadap bagian kode lain tentu akan sulit untuk memastikan method tersebut sudah benar implementasinya.
 * Kode akan sulit untuk diubah.
 Jika kode kita memiliki dependency tinggi terhadap bagian kode lain, bisa-bisa saat mengubah satu bagian kode, kode-kode yang tidak berhubungan juga ikut berubah behaviornya dan terjadi error yang tidak diinginkan.
+</details>
+
+# Tutorial 4
+#### Reflection
+1. Menurut saya sebagai pemula, TDD cukup merepotkan karena kita harus membuat unit test sebelum
+benar-benar menulis kode. Agak sulit membayangkan kasus-kasus apa yang harus dihandle jika kodingannya saja belum ada.
+Namun TDD sebenarnya cukup bermanfaat. Membuat unit test di awal membuat kita fokus untuk memastikan tahap pengerjaan selanjutnya tidak
+"keluar dari jalur". Dengan kata lain, unit test yang telah dibuat sebelumnya bisa memandu kita untuk fokus memenuhi dulu requirement utama dari program. 
+Jumlah unit test yang telah dipenuhi pada setiap tahap pengembangan kode juga memberi gambaran sudah seberapa banyak progress kita. Ke depannya,
+mungkin saya perlu lebih banyak mencari tahu kasus-kasus umum apa saja yang harus ada pada unit test agar kualitas pengerjaan kode saya saat menggunakan TDD menjadi lebih baik.
+
+
+2. Prinsip F.I.R.S.T antara lain:
+* Fast: Test saya sudah memenuhi prinsip ini karena terdapat pemisahan antara unitTest dan functionalTest. 
+* Isolated: Test saya sudah memenuhi prinsip dengan menggunakan mock, sehingga tidak melibatkan objek asli, dan tidak bergantung pada testing lain. Saya juga sudah menggunakan setUp dalam membuat unit test. 
+* Repeatable: Test saya sudah memenuhi prinsip Isolated di mana setiap data yang diperlukan di dalam test akan tetap sama setiap kali testing dilakukan, sehingga menjamin hasil yang konsisten.
+* Self-Validating: Test saya sudah memenuhi prinsip ini karena menggunakan assert ketimbang "print" atau metode validasi manual lain.
+* Thorough: Test saya sudah memenuhi prinsip ini karena test saya sudah mencakup unhappy dan happy paths yang terpikirkan. 
