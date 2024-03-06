@@ -69,12 +69,11 @@ public class PaymentTest {
     }
 
     @Test
-    void testCreateOrderEmptyOrder(){
-        orders.clear();
+    void testCreatePaymentEmptyOrder(){
         Map<String, String> paymentData = new HashMap<String, String>();
         assertThrows(IllegalArgumentException.class, () -> {
             Payment payment = new Payment("18353427-09av-40p7-b504-5o902399d79b",
-                    "CASH_ON_DELIVERY", this.orders.getFirst(), paymentData);
+                    "CASH_ON_DELIVERY", null, paymentData);
         });
     }
 
